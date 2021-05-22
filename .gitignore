@@ -28,4 +28,5 @@
 /config/master.key
 
 /.idea
-/vender
+/vendor
+/node_modules
