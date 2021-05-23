@@ -4,11 +4,8 @@
 
  - ruby 2.6.5
  - rails 6.0
- - postgres
+ - postgresql
  
 ### deploy
 
-```bash
-    > docker build .
-    > docker run -d  -p 3000:3000 -e PG_HOST='host.docker.internal' image
-```
+ - `docker-compose up -d`
