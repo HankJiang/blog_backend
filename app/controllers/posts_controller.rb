@@ -10,15 +10,24 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(create_params)
-    render :show
+    @post = Post.new(create_params)
+    if @post.save
+      render :show
+    else
+      render json: @post.errors, status: :bad_request
+    end
   end
 
   def update
-    @post.update(update_params)
-    render :show
+    @post.assign_attributes(update_params)
+    if @post.save
+      render :show
+    else
+      render json: @post.errors, status: :bad_request
+    end
   end
 
+  # TODO check author
   def destroy
     @post.destroy
     head :ok

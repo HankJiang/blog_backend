@@ -2,9 +2,13 @@ class UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
 
   def create
-    @user = User.create(create_params)
-    session[:user_id] = @user.id
-    head :ok
+    user = User.new(create_params)
+    if user.save
+      session[:user_id] = user.id
+      head :ok
+    else
+      render json: user.errors, status: :bad_request
+    end
   end
 
   private
