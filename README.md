@@ -8,5 +8,5 @@
  
 ### deploy
 
- - `docker volume create --name=database_data`
+ - `docker volume create --name=pgdata`
  - `docker-compose up -d --build`

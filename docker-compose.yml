@@ -9,24 +9,24 @@ services:
     environment:
       POSTGRES_USER: 'root'
       POSTGRES_PASSWORD: 'password'
-      POSTGRES_DB: 'blog_prod'
+      POSTGRES_DB: 'blog_dev'
     volumes:
-      - database_data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
 
   web:
     build: .
     ports:
       - "8001:3000"
     environment:
-      RAILS_ENV: 'production'
+      RAILS_ENV: 'development'
       PG_HOST: db
       PG_PORT: 5432
-      PG_DB: 'blog_prod'
+      PG_DB: 'blog_dev'
       PG_USER: 'root'
       PG_PASS: 'password'
     extra_hosts:
       host.docker.internal: host-gateway
 
 volumes:
-  database_data:
+  pgdata:
     external: true
