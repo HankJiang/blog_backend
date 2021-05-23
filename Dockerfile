@@ -17,6 +17,10 @@ RUN bundle install --jobs 20 --retry 5
 ENV RAILS_ROOT /var/www/blog
 WORKDIR $RAILS_ROOT
 COPY . $RAILS_ROOT
+
+RUN mkdir tmp/sockets
+RUN mkdir tmp/pids
+
 EXPOSE 3000
 
 CMD bundle exec rake db:migrate && bundle exec puma -C config/puma.rb
