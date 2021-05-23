@@ -8,4 +8,5 @@
  
 ### deploy
 
- - `docker-compose up -d`
+ - `docker volume create --name=database_data`
+ - `docker-compose up -d --build`
