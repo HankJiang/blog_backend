@@ -1,10 +1,9 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    # origins 'localhost', 'http://api.gsxxm.com', 'http://gsxxm.com'
-    origins '*'
+    origins 'localhost', 'gsxxm.com', '.gsxxm.com', '127.0.0.1'
     resource '*',
              headers: :any,
-             methods: [:get, :post, :patch, :put, :delete]
-             # credentials: true
+             methods: [:get, :post, :patch, :put, :delete],
+             credentials: true
   end
 end
