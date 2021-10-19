@@ -1,17 +1,17 @@
 version: '3.3'
 
 services:
-  db:
-    image: postgres
-    restart: always
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_USER: 'root'
-      POSTGRES_PASSWORD: 'password'
-      POSTGRES_DB: 'blog_dev'
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+#   db:
+#     image: postgres
+#     restart: always
+#     ports:
+#       - 5432:5432
+#     environment:
+#       POSTGRES_USER: 'root'
+#       POSTGRES_PASSWORD: 'password'
+#       POSTGRES_DB: 'blog_dev'
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data
 
   web:
     build: .
@@ -19,7 +19,7 @@ services:
       - "8001:3000"
     environment:
       RAILS_ENV: 'development'
-      PG_HOST: db
+      PG_HOST: localhost # db
       PG_PORT: 5432
       PG_DB: 'blog_dev'
       PG_USER: 'root'
@@ -27,6 +27,6 @@ services:
     extra_hosts:
       host.docker.internal: host-gateway
 
-volumes:
-  pgdata:
-    external: true
+# volumes:
+#   pgdata:
+#     external: true
